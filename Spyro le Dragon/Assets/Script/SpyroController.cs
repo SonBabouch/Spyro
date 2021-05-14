@@ -4,46 +4,28 @@ using UnityEngine;
 
 public class SpyroController : MonoBehaviour
 {
+    public CharacterController controller;
+    public Transform cam;
 
-    public Rigidbody spyroRb;
+    public float speed = 6f;
 
-    public float speed;
-    public float jumpForce;
+    public float turnSmoothTime = 0.1f;
+    float turnSmoothVelocity;
 
-    private float horizontalAxis;
-    private float verticalAxis;
-
-    Vector3 movement;
-
-    private void Start()
-    {
-        spyroRb = GetComponent<Rigidbody>();
-    }
-    private void FixedUpdate()
-    {
-        horizontalAxis = Input.GetAxisRaw("Horizontal");
-        verticalAxis = Input.GetAxisRaw("Vertical");
-
-        Movement();
-    }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        float horizontal = Input.GetAxisRaw("Horizontal");
+        float vertical = Input.GetAxisRaw("Vertical");
+        Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
+
+        if(direction.magnitude >= 0.1f)
         {
-            Jump();
+            float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
+            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
+            transform.rotation = Quaternion.Euler(0f, angle, 0f);
+
+            Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward; 
+            controller.Move(moveDir.normalized * speed * Time.deltaTime);
         }
     }
-    public void Movement()
-    {
-        spyroRb.velocity = new Vector3(horizontalAxis * speed, spyroRb.velocity.y, verticalAxis * speed);
-    }
-
-    public void Jump()
-    {
-        spyroRb.velocity = new Vector3(spyroRb.velocity.x, jumpForce, spyroRb.velocity.z);
-    }
-
-
-
-
 }
