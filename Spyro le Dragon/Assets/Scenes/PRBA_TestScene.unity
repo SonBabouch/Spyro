@@ -187,12 +187,42 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 351231334}
-  m_LocalRotation: {x: 0.19209911, y: -0.000000023880297, z: 0.000000004674443, w: 0.9813756}
+  m_LocalRotation: {x: 0.19209906, y: -0.00000001688592, z: 0.0000000033053293, w: 0.9813756}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1921680599}
   m_Father: {fileID: 1710745058}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &418312678
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 418312679}
+  m_Layer: 0
+  m_Name: GroundCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &418312679
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 418312678}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -1.95, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8381380544523863832}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &615763642
@@ -261,7 +291,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 615763642}
-  m_LocalRotation: {x: 0.20987105, y: 0.000000016823178, z: -0.0000000036111207, w: 0.9777291}
+  m_LocalRotation: {x: 0.20987101, y: 0.00000000841159, z: -0.0000000018055601, w: 0.9777291}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -346,8 +376,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.20632201, y: 0.000000021353948, z: -0.0000000045026685, w: 0.97848415}
-  m_LocalPosition: {x: 0, y: 11.634058, z: -16.650057}
+  m_LocalRotation: {x: 0.20632197, y: 5.0175707e-16, z: -1.0579987e-16, w: 0.97848415}
+  m_LocalPosition: {x: 0, y: 16.634056, z: -16.650057}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -640,7 +670,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1710745056}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 11.634058, z: -16.650057}
+  m_LocalPosition: {x: 0, y: 16.634056, z: -16.650057}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1796218074}
@@ -745,7 +775,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1796218072}
-  m_LocalRotation: {x: 0.22762074, y: -0.000000020800739, z: 0.000000004862316, w: 0.9737499}
+  m_LocalRotation: {x: 0.22762068, y: -1e-45, z: -0, w: 0.9737499}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1017,7 +1047,7 @@ GameObject:
   - component: {fileID: 2034592898}
   - component: {fileID: 2034592897}
   - component: {fileID: 2034592896}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3314,11 +3344,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9159043590683844002}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 3.4, z: 0}
+  m_LocalPosition: {x: 0, y: 8.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 639634705059993478}
   - {fileID: 6944629969924139900}
+  - {fileID: 418312679}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3499,7 +3530,16 @@ MonoBehaviour:
   controller: {fileID: 9159043590683844003}
   cam: {fileID: 963194228}
   speed: 6
+  gravity: -9.81
+  jump: 3
   turnSmoothTime: 0.1
+  velocity: {x: 0, y: 0, z: 0}
+  groundCheck: {fileID: 418312679}
+  groundDistance: 0.4
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 257
+  isGrounded: 1
 --- !u!4 &9168077780928886710
 Transform:
   m_ObjectHideFlags: 0
