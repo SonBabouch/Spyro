@@ -8,7 +8,13 @@ public class SpyroController : MonoBehaviour
     public Transform cam;
 
     public float speed = 6f;
+    public float baseSpeed = 6f;
+    public float chargeSpeed = 12f;
+
     public float gravity = -9.81f;
+    public float glideGravity = -9.81f / 2f;
+    public float baseGravity = -9.81f;
+
     public float jump = 3f;
 
     public float turnSmoothTime = 0.1f;
@@ -24,10 +30,9 @@ public class SpyroController : MonoBehaviour
     {
         Move();
         Gravity();
-        if(Input.GetButtonDown("Jump") && isGrounded)
-        {
-            Jump();
-        }
+        Jump();
+        Glide();
+        Charge();
     }
 
     public void Move()
@@ -53,7 +58,7 @@ public class SpyroController : MonoBehaviour
 
         if (isGrounded && velocity.y < 0)
         {
-            velocity.y = -2f;
+            velocity.y = -5f;
         }
 
         velocity.y += gravity * Time.deltaTime;
@@ -62,6 +67,28 @@ public class SpyroController : MonoBehaviour
 
     public void Jump()
     {
-        velocity.y = Mathf.Sqrt(jump * -2f * gravity);
+        if (Input.GetButtonDown("Jump") && isGrounded)
+        {
+            velocity.y = Mathf.Sqrt(jump * -3f * gravity);
+        }
+
+    }
+
+    public void Glide()
+    {
+        if (Input.GetButton("Jump") && !isGrounded)
+        {
+            gravity = glideGravity;
+        }
+        else gravity = baseGravity;
+    }
+
+    public void Charge()
+    {
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            speed = chargeSpeed;
+        }
+        else speed = baseSpeed;
     }
 }
