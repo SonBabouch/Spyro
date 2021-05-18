@@ -5,6 +5,7 @@ using UnityEngine;
 public class SpyroController : MonoBehaviour
 {
     public CharacterController controller;
+    public Animator anim;
     public Transform cam;
 
     public float speed = 6f;
@@ -26,6 +27,11 @@ public class SpyroController : MonoBehaviour
     public float groundDistance;
     public LayerMask groundMask;
     public bool isGrounded;
+
+    private void Start()
+    {
+        anim = GetComponent<Animator>();
+    }
     private void Update()
     {
         Move();
@@ -33,6 +39,7 @@ public class SpyroController : MonoBehaviour
         Jump();
         Glide();
         Charge();
+        Debug.Log(velocity.y);
     }
 
     public void Move()
@@ -43,12 +50,19 @@ public class SpyroController : MonoBehaviour
 
         if (direction.magnitude >= 0.1f)
         {
+            anim.SetBool("isWalking", true);
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
 
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
             controller.Move(moveDir.normalized * speed * Time.deltaTime);
+        }
+        else anim.SetBool("isWalking", false);
+
+        if(!isGrounded)
+        {
+            anim.SetBool("isWalking", false);
         }
     }
 
@@ -70,25 +84,29 @@ public class SpyroController : MonoBehaviour
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
             velocity.y = Mathf.Sqrt(jump * -3f * gravity);
-        }
-
+        }     
     }
 
     public void Glide()
     {
         if (Input.GetButton("Jump") && !isGrounded)
         {
-            gravity = glideGravity;
+                gravity = glideGravity;
         }
         else gravity = baseGravity;
     }
 
     public void Charge()
     {
-        if (Input.GetKey(KeyCode.LeftShift))
+        if (Input.GetKey(KeyCode.LeftShift) && isGrounded)
         {
             speed = chargeSpeed;
+            anim.SetBool("isCharging", true);
         }
-        else speed = baseSpeed;
+        else
+        {
+            speed = baseSpeed;
+            anim.SetBool("isCharging", false);
+        }
     }
 }

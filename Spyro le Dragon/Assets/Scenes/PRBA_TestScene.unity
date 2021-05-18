@@ -187,7 +187,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 351231334}
-  m_LocalRotation: {x: 0.086302035, y: -0.000000017669747, z: 0.000000001530646, w: 0.99626905}
+  m_LocalRotation: {x: 0.086302035, y: 0.00000001766976, z: -0.000000001530647, w: 0.99626905}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -291,7 +291,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 615763642}
-  m_LocalRotation: {x: 0.10436161, y: -0.0000000042780575, z: 4.4891624e-10, w: 0.99453944}
+  m_LocalRotation: {x: 0.10436161, y: 0.000000004278106, z: -4.4892137e-10, w: 0.99453944}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -376,7 +376,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.10075225, y: -0.000000013748329, z: 0.0000000013922595, w: 0.99491155}
+  m_LocalRotation: {x: 0.10075225, y: 0.00000001374835, z: -0.0000000013922618, w: 0.99491155}
   m_LocalPosition: {x: 0, y: 5.8310857, z: -16.888}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -775,7 +775,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1796218072}
-  m_LocalRotation: {x: 0.122434504, y: 8.045682e-23, z: 4.069615e-24, w: 0.9924766}
+  m_LocalRotation: {x: 0.122434504, y: 1e-45, z: -0, w: 0.9924766}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1819,14 +1819,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 925822210870292493}
-  m_LocalRotation: {x: 0.04210893, y: -0.000000031601033, z: 0.0000000038519086, w: 0.999113}
+  m_LocalRotation: {x: 0.23034997, y: -0.00000003032334, z: 0.000000006839099, w: 0.9731078}
   m_LocalPosition: {x: 4.4408918e-17, y: 0.009765337, z: -7.45058e-10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6764855475744013504}
   m_Father: {fileID: 5942458832553032749}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 26.635002, y: 0, z: 0}
 --- !u!4 &3065318874129214977
 Transform:
   m_ObjectHideFlags: 0
@@ -2602,7 +2602,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1171195167197461028}
   m_LocalRotation: {x: 0.9668764, y: -0.14386667, z: -0.033659484, w: -0.2081333}
-  m_LocalPosition: {x: -0.005681439, y: 0.0067217, z: -0.00023238789}
+  m_LocalPosition: {x: -0.005681439, y: 0.0067217, z: -0.0002323879}
   m_LocalScale: {x: 1.0000001, y: 0.99999994, z: 1}
   m_Children:
   - {fileID: 2665241253981709823}
@@ -2758,7 +2758,7 @@ Transform:
   m_GameObject: {fileID: 5774767850379052800}
   m_LocalRotation: {x: 0.00000006508471, y: 0.6878554, z: 0.7258477, w: -0.00000016569146}
   m_LocalPosition: {x: 8.881784e-18, y: 0.0118194185, z: 1.4901157e-10}
-  m_LocalScale: {x: 1, y: 0.99999994, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3039750917037423255}
   m_Father: {fileID: 4224460978492535768}
@@ -3490,6 +3490,7 @@ GameObject:
   - component: {fileID: 8381380544523863832}
   - component: {fileID: 9159043590683844005}
   - component: {fileID: 9159043590683844003}
+  - component: {fileID: 9159043590683844004}
   m_Layer: 0
   m_Name: SpyroLeDragon
   m_TagString: Untagged
@@ -3515,6 +3516,25 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 1.5, z: -0.13}
+--- !u!95 &9159043590683844004
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9159043590683844002}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 56aea6d32719de141a6eaf6092b058e7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &9159043590683844005
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3528,6 +3548,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 9159043590683844003}
+  anim: {fileID: 0}
   cam: {fileID: 963194228}
   speed: 6
   baseSpeed: 6
