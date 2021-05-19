@@ -39,7 +39,15 @@ public class SpyroController : MonoBehaviour
         Jump();
         Glide();
         Charge();
-        Debug.Log(velocity.y);
+        if (!isGrounded)
+        {
+            anim.SetBool("isWalking", false);
+            anim.SetBool("isJumping", true);
+        }
+        if (isGrounded)
+        {
+            anim.SetBool("isJumping", false);
+        }
     }
 
     public void Move()
@@ -59,11 +67,6 @@ public class SpyroController : MonoBehaviour
             controller.Move(moveDir.normalized * speed * Time.deltaTime);
         }
         else anim.SetBool("isWalking", false);
-
-        if(!isGrounded)
-        {
-            anim.SetBool("isWalking", false);
-        }
     }
 
     public void Gravity()
@@ -96,12 +99,24 @@ public class SpyroController : MonoBehaviour
         else gravity = baseGravity;
     }
 
+    public LayerMask destroyable;
+    public RaycastHit hit;
+    public float range;
     public void Charge()
     {
         if (Input.GetKey(KeyCode.LeftShift) && isGrounded)
         {
             speed = chargeSpeed;
+
+            if (Physics.Raycast(transform.position + Vector3.up * 0.2f,  transform.forward, out hit, range, destroyable))
+            {
+                Debug.DrawRay(transform.position + Vector3.up * 0.2f, transform.forward * range, Color.green, 0f);
+                Destroy(hit.collider.gameObject);
+            }
+            else Debug.DrawRay(transform.position + Vector3.up * 0.2f, transform.forward * range, Color.red, 0f);
+
             anim.SetBool("isCharging", true);
+
         }
         else
         {
