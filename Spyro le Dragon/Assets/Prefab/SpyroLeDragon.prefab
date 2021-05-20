@@ -130,7 +130,11 @@ MonoBehaviour:
   destroyable:
     serializedVersion: 2
     m_Bits: 512
-  range: 6
+  chargeRange: 6
+  fireRange: 12
+  fireVectorForward: {x: 0, y: 0, z: 1}
+  fireVectorLeft: {x: -0.5, y: 0, z: 1}
+  fireVectorRight: {x: 0.5, y: 0, z: 1}
 --- !u!143 &395826926892226067
 CharacterController:
   m_ObjectHideFlags: 0

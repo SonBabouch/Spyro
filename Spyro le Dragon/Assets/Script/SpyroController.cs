@@ -39,6 +39,7 @@ public class SpyroController : MonoBehaviour
         Jump();
         Glide();
         Charge();
+        Fire();
         if (!isGrounded)
         {
             anim.SetBool("isWalking", false);
@@ -101,19 +102,19 @@ public class SpyroController : MonoBehaviour
 
     public LayerMask destroyable;
     public RaycastHit hit;
-    public float range;
+    public float chargeRange;
     public void Charge()
     {
         if (Input.GetKey(KeyCode.LeftShift) && isGrounded)
         {
             speed = chargeSpeed;
 
-            if (Physics.Raycast(transform.position + Vector3.up * 0.2f,  transform.forward, out hit, range, destroyable))
+            if (Physics.Raycast(transform.position + Vector3.up * 0.2f,  transform.forward, out hit, chargeRange, destroyable))
             {
-                Debug.DrawRay(transform.position + Vector3.up * 0.2f, transform.forward * range, Color.green, 0f);
+                Debug.DrawRay(transform.position + Vector3.up * 0.2f, transform.forward * chargeRange, Color.green, 0f);
                 Destroy(hit.collider.gameObject);
             }
-            else Debug.DrawRay(transform.position + Vector3.up * 0.2f, transform.forward * range, Color.red, 0f);
+            else Debug.DrawRay(transform.position + Vector3.up * 0.2f, transform.forward * chargeRange, Color.red, 0f);
 
             anim.SetBool("isCharging", true);
 
@@ -122,6 +123,39 @@ public class SpyroController : MonoBehaviour
         {
             speed = baseSpeed;
             anim.SetBool("isCharging", false);
+        }
+    }
+
+    public float fireRange;
+    public Vector3 fireVectorLeft;
+    public Vector3 fireVectorRight;
+    public void Fire()
+    {
+        if(Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            if (Physics.Raycast(transform.position + Vector3.up * 0.2f, transform.forward, out hit, fireRange, destroyable))
+            {
+                Debug.DrawRay(transform.position + Vector3.up * 0.2f, transform.forward * fireRange, Color.green, 2f);
+                Destroy(hit.collider.gameObject);
+            }
+            else Debug.DrawRay(transform.position + Vector3.up * 0.2f, transform.forward * fireRange, Color.red, 2f);
+
+
+
+            if (Physics.Raycast(transform.position + Vector3.up * 0.2f, transform.forward + transform.right * 0.5f, out hit, fireRange, destroyable))
+            {
+                Debug.DrawRay(transform.position + Vector3.up * 0.2f, (transform.forward + transform.right *0.5f).normalized * fireRange, Color.green, 2f);
+                Destroy(hit.collider.gameObject);
+            }
+            else Debug.DrawRay(transform.position + Vector3.up * 0.2f, (transform.forward + transform.right * 0.5f).normalized * fireRange, Color.red, 2f);
+
+
+            if (Physics.Raycast(transform.position + Vector3.up * 0.2f, transform.forward + -transform.right * 0.5f, out hit, fireRange, destroyable))
+            {
+                Debug.DrawRay(transform.position + Vector3.up * 0.2f, (transform.forward + -transform.right * 0.5f) * fireRange, Color.green, 2f);
+                Destroy(hit.collider.gameObject);
+            }
+            else Debug.DrawRay(transform.position + Vector3.up * 0.2f, (transform.forward + -transform.right * 0.5f) * fireRange, Color.red, 2f);
         }
     }
 }
