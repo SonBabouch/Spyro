@@ -28,6 +28,14 @@ public class SpyroController : MonoBehaviour
     public LayerMask groundMask;
     public bool isGrounded;
 
+    public Transform firePos;
+    public GameObject fire;
+    public float fireRange;
+
+    public LayerMask destroyable;
+    public RaycastHit hit;
+    public float chargeRange;
+
     private void Start()
     {
         anim = GetComponent<Animator>();
@@ -100,9 +108,7 @@ public class SpyroController : MonoBehaviour
         else gravity = baseGravity;
     }
 
-    public LayerMask destroyable;
-    public RaycastHit hit;
-    public float chargeRange;
+
     public void Charge()
     {
         if (Input.GetKey(KeyCode.LeftShift) && isGrounded)
@@ -126,13 +132,13 @@ public class SpyroController : MonoBehaviour
         }
     }
 
-    public float fireRange;
-    public Vector3 fireVectorLeft;
-    public Vector3 fireVectorRight;
+
     public void Fire()
     {
-        if(Input.GetKeyDown(KeyCode.Mouse0))
+
+        if (Input.GetKeyDown(KeyCode.Mouse0))
         {
+            ShootFireParticle();
             if (Physics.Raycast(transform.position + Vector3.up * 0.2f, transform.forward, out hit, fireRange, destroyable))
             {
                 Debug.DrawRay(transform.position + Vector3.up * 0.2f, transform.forward * fireRange, Color.green, 2f);
@@ -142,10 +148,12 @@ public class SpyroController : MonoBehaviour
 
 
 
+
             if (Physics.Raycast(transform.position + Vector3.up * 0.2f, transform.forward + transform.right * 0.5f, out hit, fireRange, destroyable))
             {
                 Debug.DrawRay(transform.position + Vector3.up * 0.2f, (transform.forward + transform.right *0.5f).normalized * fireRange, Color.green, 2f);
                 Destroy(hit.collider.gameObject);
+
             }
             else Debug.DrawRay(transform.position + Vector3.up * 0.2f, (transform.forward + transform.right * 0.5f).normalized * fireRange, Color.red, 2f);
 
@@ -158,4 +166,10 @@ public class SpyroController : MonoBehaviour
             else Debug.DrawRay(transform.position + Vector3.up * 0.2f, (transform.forward + -transform.right * 0.5f) * fireRange, Color.red, 2f);
         }
     }
+
+    void ShootFireParticle()
+    {
+        Instantiate(fire, firePos);
+    }
+
 }
